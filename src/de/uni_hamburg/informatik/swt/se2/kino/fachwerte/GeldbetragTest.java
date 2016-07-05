@@ -73,5 +73,25 @@ public class GeldbetragTest
     {
         assertEquals(Geldbetrag.get(1, 43), Geldbetrag.integerToGeldbetrag(143));
     }
+    
+    /**
+     * Testet ob ein Geldbetrag größer ist als ein anderer
+     */
+    @Test
+    public void testeGreater()
+    {
+        assertTrue(_zweiEuroZehn.greater(_einEuroFuenfzig));
+        assertFalse(_einEuroFuenfzig.greater(_zweiEuroZehn));
+    }
 
+    /**
+     * Testet ob ein Geldbetrag kleiner ist als ein anderer
+     */
+    
+    @Test
+    public void testeLesser()
+    {
+        assertFalse(_zweiEuroZehn.lesser(_einEuroFuenfzig));
+        assertTrue(_einEuroFuenfzig.lesser(_zweiEuroZehn));
+    }
 }
