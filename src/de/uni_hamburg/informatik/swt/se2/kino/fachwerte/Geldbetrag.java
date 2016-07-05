@@ -1,9 +1,9 @@
 package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
-import javax.xml.transform.Templates;
+
 
 /**
- * Ein Fachwert zur Repräsentation von Geldbeträgen für das Kinosystem
+ * Ein Fachwert zur Repr‰sentation von Geldbetr‰gen f¸r das Kinosystem
  * @author Balthasar Spanner
  *
  */
@@ -28,7 +28,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Öffentliche Schnittstelle für den Fachwert
+     * ÷ffentliche Schnittstelle f¸r den Fachwert
      * @param euro Der Eurowert
      * @param cent Der Centwert
      * @return Ein Geldbetragsobjekt
@@ -43,7 +43,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Addiert zwei Geldbeträge
+     * Addiert zwei Geldbetr‰ge
      * @param other Der zu addierende Geldbetrag
      * @return Ein neues Geldbetragsobjekt
      */
@@ -60,14 +60,27 @@ public final class Geldbetrag
     }
 
     /**
-     * Subtrahiert zwei Geldbeträge
+     * Subtrahiert zwei Geldbetr‰ge
      * @param other Der zu Subtrahierende Geldbetrag
      * @return Ein neues Geldbetragsobjekt
      */
     public Geldbetrag minus(Geldbetrag other)
     {
-        //TODO Minus rechnen bauen, aber aufpassen, dass keine negativen sachen ausgegeben werden
-        return null;
+        String eurocentBetrag = String.valueOf(_euro) + String.valueOf(_cent);
+        String eurocentsInput = String.valueOf(other.getEuro()) + String.valueOf(other.getCent());
+        
+        int tempBetrag = Integer.valueOf(eurocentBetrag); 
+        int tempInput = Integer.valueOf(eurocentsInput);
+        
+        int tempValue = Math.abs(tempBetrag - tempInput);
+        
+        int tempCent = tempValue % 100;
+        int tempEuro = (tempValue - (tempValue % 100)) / 100;
+        
+        return Geldbetrag.get(tempEuro, tempCent);
+        
+        
+        
     }
 
     /**
@@ -108,7 +121,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Überprüft, ob der andere Geldbetrag größer ist
+     * ‹berpr¸ft, ob der andere Geldbetrag grˆﬂer ist
      * @param other Der zu testende Betrag
      * @return true oder false
      */
@@ -129,7 +142,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Überprüft, ob der andere Geldbetrag kleiner ist
+     * ‹berpr¸ft, ob der andere Geldbetrag kleiner ist
      * @param other Der zu testende Betrag
      * @return true oder false
      */
@@ -150,7 +163,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Gibt den Euro Betrag als int zurück
+     * Gibt den Euro Betrag als int zur¸ck
      * @return den Euro Betrag
      */
     private int getEuro()
@@ -160,7 +173,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Gibt den Cent Betrag als int zurück
+     * Gibt den Cent Betrag als int zur¸ck
      * @return den Cent Betrag
      */
     private int getCent()
