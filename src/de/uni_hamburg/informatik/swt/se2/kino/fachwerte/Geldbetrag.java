@@ -1,5 +1,7 @@
 package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
+import javax.xml.transform.Templates;
+
 /**
  * Ein Fachwert zur Repräsentation von Geldbeträgen für das Kinosystem
  * @author Balthasar Spanner
@@ -74,8 +76,12 @@ public final class Geldbetrag
      */
     public Geldbetrag mal(int multiplikator)
     {
-        // TODO Auto-generated method stub
-        return null;
+        int tempCent = Math.abs(_cent * multiplikator);
+        int tempEuro = tempCent / 100;
+        tempCent %= 100;
+        tempEuro += Math.abs(_euro * multiplikator);
+        
+        return Geldbetrag.get(tempEuro, tempCent);
     }
 
     /**
