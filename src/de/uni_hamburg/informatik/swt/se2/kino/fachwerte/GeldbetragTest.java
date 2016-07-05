@@ -23,6 +23,7 @@ public class GeldbetragTest
     public void testeStringRepraesentation()
     {
         assertEquals("01,50", _einEuroFuenfzig.toString());
+        assertEquals("01,03", Geldbetrag.get(1, 3).toString()); // schaut, dass auch die null vor unter 10ct Beträgen eingefügt wird
     }
     
     /**
