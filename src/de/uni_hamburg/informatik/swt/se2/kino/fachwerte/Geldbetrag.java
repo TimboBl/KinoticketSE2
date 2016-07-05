@@ -24,6 +24,7 @@ public final class Geldbetrag
 
         _euro = euro;
         _cent = cent;
+        //nur ein test
     }
 
     /**
