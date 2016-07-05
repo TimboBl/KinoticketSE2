@@ -114,6 +114,17 @@ public final class Geldbetrag
      */
     public boolean greater(Geldbetrag other)
     {
+        if (_euro > other.getEuro())
+        {
+            return true;
+        }
+        else if (_euro == other.getEuro())
+        {
+            if (_cent > other.getCent())
+            {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -124,6 +135,17 @@ public final class Geldbetrag
      */
     public boolean lesser(Geldbetrag other)
     {
+        if (_euro < other.getEuro())
+        {
+            return true;
+        }
+        else if (_euro == other.getEuro())
+        {
+            if (_cent < other.getCent())
+            {
+                return true;
+            }
+        }
         return false;
     }
 
