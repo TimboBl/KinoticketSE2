@@ -1,0 +1,180 @@
+package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
+
+/**
+ * Ein Fachwert zur Repräsentation von Geldbeträgen für das Kinosystem
+ * @author Balthasar Spanner
+ *
+ */
+public final class Geldbetrag
+{
+    private final int _euro;
+    private final int _cent;
+
+    /**
+     * Initialisiert ein Geldbetragsobjekt
+     * @param euro Der Eurowert
+     * @param cent Der Centwert
+     * @require cent <= 99 : "Vorbedingung verletzt: Zu viel Cents du Opfer"
+     */
+    private Geldbetrag(int euro, int cent)
+    {
+        assert cent <= 99 : "Vorbedingung verletzt: Zu viel Cents du Opfer";
+
+        _euro = euro;
+        _cent = cent;
+    }
+
+    /**
+     * Öffentliche Schnittstelle für den Fachwert
+     * @param euro Der Eurowert
+     * @param cent Der Centwert
+     * @return Ein Geldbetragsobjekt
+     * 
+     * @require cent <= 99 : "Vorbedingung verletzt: Zu viel Cents du Opfer"
+     */
+    public static Geldbetrag get(int euro, int cent)
+    {
+        assert cent <= 99 : "Vorbedingung verletzt: Zu viel Cents du Opfer";
+
+        return new Geldbetrag(euro, cent);
+    }
+
+    /**
+     * Addiert zwei Geldbeträge
+     * @param other Der zu addierende Geldbetrag
+     * @return Ein neues Geldbetragsobjekt
+     */
+    public Geldbetrag plus(Geldbetrag other)
+    {
+        assert other != null : "Vorbedingung verletzt: Der zu addierende Betrag darf nicht null sein";
+
+        int tempCents = _cent + other.getCent();
+        int tempEuro = tempCents / 100;
+        tempCents %= 100;
+        tempEuro += _euro + other.getEuro();
+
+        return Geldbetrag.get(tempEuro, tempCents);
+    }
+
+    /**
+     * Subtrahiert zwei Geldbeträge
+     * @param other Der zu Subtrahierende Geldbetrag
+     * @return Ein neues Geldbetragsobjekt
+     */
+    public Geldbetrag minus(Geldbetrag other)
+    {
+        //TODO Minus rechnen bauen, aber aufpassen, dass keine negativen sachen ausgegeben werden
+        return null;
+    }
+
+    /**
+     * Multipliziert einen Geldbetrag mit einer Zahl
+     * @param other Der Multiplikator
+     * @return Ein neues Geldbetragsobjekt
+     */
+    public Geldbetrag mal(int multiplikator)
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * Konvertiert einen String zu einem Geldbetrag
+     * @param betrag Der zu konvertierende String
+     * @return Ein neues Geldbetragsobjekt
+     */
+    public static Geldbetrag stringToGeldbetrag(String betrag)
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * Konvertiert einen Integer zu einem Geldbetrag
+     * @param betrag Der zu konvertierende Integer
+     * @return Ein neues Geldbetragsobjekt
+     */
+    public static Geldbetrag integerToGeldbetrag(int betrag)
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * Überprüft, ob der andere Geldbetrag größer ist
+     * @param other Der zu testende Betrag
+     * @return true oder false
+     */
+    public boolean greater(Geldbetrag other)
+    {
+        return false;
+    }
+
+    /**
+     * Überprüft, ob der andere Geldbetrag kleiner ist
+     * @param other Der zu testende Betrag
+     * @return true oder false
+     */
+    public boolean lesser(Geldbetrag other)
+    {
+        return false;
+    }
+
+    /**
+     * Gibt den Euro Betrag als int zurück
+     * @return den Euro Betrag
+     */
+    private int getEuro()
+    {
+        return _euro;
+
+    }
+
+    /**
+     * Gibt den Cent Betrag als int zurück
+     * @return den Cent Betrag
+     */
+    private int getCent()
+    {
+        return _cent;
+
+    }
+
+    @Override
+    public String toString()
+    {
+        String ausgabe = "";
+
+        ausgabe = "0" + String.valueOf(_euro) + ",";
+
+        if (_cent < 10)
+        {
+            ausgabe += "0" + _cent;
+        }
+        else
+        {
+            ausgabe += _cent;
+        }
+
+        return ausgabe;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return _euro + _cent;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        return (o instanceof Geldbetrag) && equal((Geldbetrag) o);
+    }
+
+    public boolean equal(Geldbetrag andererBetrag)
+    {
+
+        return _euro == andererBetrag.getEuro()
+                && _cent == andererBetrag.getCent();
+    }
+}
