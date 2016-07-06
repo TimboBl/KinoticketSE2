@@ -3,7 +3,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
 
 /**
- * Ein Fachwert zur Repr‰sentation von Geldbetr‰gen f¸r das Kinosystem
+ * SPAST
  * @author Balthasar Spanner
  *
  */
