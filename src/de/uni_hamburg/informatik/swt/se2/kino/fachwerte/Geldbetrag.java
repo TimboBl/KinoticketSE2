@@ -51,10 +51,10 @@ public final class Geldbetrag
     {
         assert other != null : "Vorbedingung verletzt: Der zu addierende Betrag darf nicht null sein";
 
-        int tempCents = _cent + other.getCent();
+        int tempCents = _cent + other._cent;
         int tempEuro = tempCents / 100;
         tempCents %= 100;
-        tempEuro += _euro + other.getEuro();
+        tempEuro += _euro + other._euro;
 
         return Geldbetrag.get(tempEuro, tempCents);
     }
@@ -67,8 +67,9 @@ public final class Geldbetrag
     public Geldbetrag minus(Geldbetrag other)
     {
         String eurocentBetrag = String.valueOf(_euro) + String.valueOf(_cent);
-        String eurocentsInput = String.valueOf(other.getEuro())
-                + String.valueOf(other.getCent());
+        String eurocentsInput = String.valueOf(other._euro)
+                + String.valueOf(other._cent);
+        
 
         int tempBetrag = Integer.valueOf(eurocentBetrag);
         int tempInput = Integer.valueOf(eurocentsInput);
@@ -139,13 +140,13 @@ public final class Geldbetrag
      */
     public boolean greater(Geldbetrag other)
     {
-        if (_euro > other.getEuro())
+        if (_euro > other._euro)
         {
             return true;
         }
-        else if (_euro == other.getEuro())
+        else if (_euro == other._euro)
         {
-            if (_cent > other.getCent())
+            if (_cent > other._cent)
             {
                 return true;
             }
@@ -160,38 +161,18 @@ public final class Geldbetrag
      */
     public boolean lesser(Geldbetrag other)
     {
-        if (_euro < other.getEuro())
+        if (_euro < other._euro)
         {
             return true;
         }
-        else if (_euro == other.getEuro())
+        else if (_euro == other._euro)
         {
-            if (_cent < other.getCent())
+            if (_cent < other._cent)
             {
                 return true;
             }
         }
         return false;
-    }
-
-    /**
-     * Gibt den Euro Betrag als int zurück
-     * @return den Euro Betrag
-     */
-    private int getEuro()
-    {
-        return _euro;
-
-    }
-
-    /**
-     * Gibt den Cent Betrag als int zurück
-     * @return den Cent Betrag
-     */
-    private int getCent()
-    {
-        return _cent;
-
     }
 
     @Override
@@ -228,7 +209,7 @@ public final class Geldbetrag
     public boolean equal(Geldbetrag andererBetrag)
     {
 
-        return _euro == andererBetrag.getEuro()
-                && _cent == andererBetrag.getCent();
+        return _euro == andererBetrag._euro
+                && _cent == andererBetrag._cent;
     }
 }
