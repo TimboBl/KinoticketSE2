@@ -62,7 +62,15 @@ public class GeldbetragTest
     @Test
     public void testeStringToGeldbetrag()
     {
+        assertEquals(Geldbetrag.get(3, 50), Geldbetrag.stringToGeldbetrag("3,50"));
         assertEquals(Geldbetrag.get(3, 50), Geldbetrag.stringToGeldbetrag("03,50"));
+        assertEquals(Geldbetrag.get(3, 50), Geldbetrag.stringToGeldbetrag("000000003,50"));
+        assertEquals(Geldbetrag.get(3, 50), Geldbetrag.stringToGeldbetrag("3,5"));
+        assertEquals(Geldbetrag.get(0, 0), Geldbetrag.stringToGeldbetrag("3,501"));
+        assertEquals(Geldbetrag.get(0, 72), Geldbetrag.stringToGeldbetrag("0,72"));
+        assertEquals(Geldbetrag.get(0, 72), Geldbetrag.stringToGeldbetrag(",72"));
+        assertEquals(Geldbetrag.get(0, 0), Geldbetrag.stringToGeldbetrag("1234567891"));
+        assertEquals(Geldbetrag.get(0, 0), Geldbetrag.stringToGeldbetrag("1,"));
     }
     
     /**

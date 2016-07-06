@@ -1,7 +1,7 @@
 package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
-import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -13,6 +13,7 @@ import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
 public final class Geldbetrag {
 	private final int _euro;
 	private final int _cent;
+	
 
 	/**
 	 * Initialisiert ein Geldbetragsobjekt
@@ -28,7 +29,6 @@ public final class Geldbetrag {
 
 		_euro = euro;
 		_cent = cent;
-
 	}
 
 	/**
@@ -112,22 +112,57 @@ public final class Geldbetrag {
 	 *            Der zu konvertierende String
 	 * @return Ein neues Geldbetragsobjekt
 	 */
+//	public static Geldbetrag stringToGeldbetrag(String betrag) {
+//		if (betrag.isEmpty()) {
+//			return Geldbetrag.get(0, 0);
+//		}
+//		int komma = betrag.indexOf(',');
+//		String tempEuro = "";
+//		if (betrag.startsWith("0")) {
+//			tempEuro = betrag.substring(1, komma);
+//
+//		} else {
+//			// TODO per exception abfangen wenn das komma nicht da ist
+//			tempEuro = betrag.substring(0, komma);
+//		}
+//		String tempCent = betrag.substring(komma + 1);
+//
+//		return Geldbetrag.get(Integer.valueOf(tempEuro), Integer.valueOf(tempCent));
+//	}
+	
+	private final static Pattern _pattern = Pattern.compile("0*?([1-9][0-9]{0,8})?(,([0-9][0-9]?))?");
+	
 	public static Geldbetrag stringToGeldbetrag(String betrag) {
-		if (betrag.isEmpty()) {
-			return Geldbetrag.get(0, 0);
-		}
-		int komma = betrag.indexOf(',');
-		String tempEuro = "";
-		if (betrag.startsWith("0")) {
-			tempEuro = betrag.substring(1, komma);
-
-		} else {
-			// TODO per exception abfangen wenn das komma nicht da ist
-			tempEuro = betrag.substring(0, komma);
-		}
-		String tempCent = betrag.substring(komma + 1);
-
-		return Geldbetrag.get(Integer.valueOf(tempEuro), Integer.valueOf(tempCent));
+	    Matcher matcher = _pattern.matcher(betrag);
+	    
+	    int tempEuros =0;
+	    int tempCents =0;
+	    
+	    if(matcher.matches())
+	    {
+    	    
+    	    if(matcher.group(1) != null)
+    	    {
+    	        tempEuros = Integer.parseInt(matcher.group(1));
+    	    }
+    	    
+    	    if(matcher.group(3) != null)
+    	    {
+    	        if(matcher.group(3).startsWith("0") && matcher.group(3).length() > 1)
+    	        {
+    	           tempCents = Integer.parseInt(matcher.group(3).substring(1));
+    	        }
+    	        else if(matcher.group(3).length() > 1)
+    	        {
+    	            tempCents = Integer.parseInt(matcher.group(3));
+    	        }
+    	        else{
+    	            tempCents = (Integer.parseInt(matcher.group(3)) * 10);
+    	        }
+    	    }
+    	    
+	    }
+	    return get(tempEuros, tempCents);
 	}
 
 	/**
