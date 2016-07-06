@@ -129,8 +129,7 @@ public final class Geldbetrag
      */
     public static Geldbetrag integerToGeldbetrag(int betrag)
     {
-        // TODO Auto-generated method stub
-        return null;
+        return Geldbetrag.get(betrag / 100, betrag%100);
     }
 
     /**
