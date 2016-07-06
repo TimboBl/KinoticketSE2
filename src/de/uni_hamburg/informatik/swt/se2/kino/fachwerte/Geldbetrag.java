@@ -3,7 +3,9 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
 
 /**
+
  * Ein Fachwert zur Repräsentation von Geldbeträgen für das Kinosystem
+
  * @author Balthasar Spanner
  *
  */
