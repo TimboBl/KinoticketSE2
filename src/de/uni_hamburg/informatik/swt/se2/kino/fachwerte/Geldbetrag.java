@@ -3,7 +3,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
 
 /**
- * Ein Fachwert zur Repr‰sentation von Geldbetr‰gen f¸r das Kinosystem
+ * Ein Fachwert zur Repräsentation von Geldbeträgen für das Kinosystem
  * @author Balthasar Spanner
  *
  */
@@ -28,7 +28,7 @@ public final class Geldbetrag
     }
 
     /**
-     * ÷ffentliche Schnittstelle f¸r den Fachwert
+     * ÷ffentliche Schnittstelle für den Fachwert
      * @param euro Der Eurowert
      * @param cent Der Centwert
      * @return Ein Geldbetragsobjekt
@@ -43,7 +43,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Addiert zwei Geldbetr‰ge
+     * Addiert zwei Geldbeträge
      * @param other Der zu addierende Geldbetrag
      * @return Ein neues Geldbetragsobjekt
      */
@@ -60,7 +60,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Subtrahiert zwei Geldbetr‰ge
+     * Subtrahiert zwei Geldbeträge
      * @param other Der zu Subtrahierende Geldbetrag
      * @return Ein neues Geldbetragsobjekt
      */
@@ -121,7 +121,7 @@ public final class Geldbetrag
     }
 
     /**
-     * ‹berpr¸ft, ob der andere Geldbetrag grˆﬂer ist
+     * Überprüft, ob der andere Geldbetrag größer ist
      * @param other Der zu testende Betrag
      * @return true oder false
      */
@@ -142,7 +142,7 @@ public final class Geldbetrag
     }
 
     /**
-     * ‹berpr¸ft, ob der andere Geldbetrag kleiner ist
+     * Überpfüft, ob der andere Geldbetrag kleiner ist
      * @param other Der zu testende Betrag
      * @return true oder false
      */
@@ -163,7 +163,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Gibt den Euro Betrag als int zur¸ck
+     * Gibt den Euro Betrag als int zurück
      * @return den Euro Betrag
      */
     private int getEuro()
@@ -173,7 +173,7 @@ public final class Geldbetrag
     }
 
     /**
-     * Gibt den Cent Betrag als int zur¸ck
+     * Gibt den Cent Betrag als int zurück
      * @return den Cent Betrag
      */
     private int getCent()
