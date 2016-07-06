@@ -1,7 +1,5 @@
 package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
-
-
 /**
 
  * Ein Fachwert zur Repräsentation von Geldbeträgen für das Kinosystem
@@ -26,7 +24,7 @@ public final class Geldbetrag
 
         _euro = euro;
         _cent = cent;
-        
+
     }
 
     /**
@@ -69,20 +67,19 @@ public final class Geldbetrag
     public Geldbetrag minus(Geldbetrag other)
     {
         String eurocentBetrag = String.valueOf(_euro) + String.valueOf(_cent);
-        String eurocentsInput = String.valueOf(other.getEuro()) + String.valueOf(other.getCent());
-        
-        int tempBetrag = Integer.valueOf(eurocentBetrag); 
+        String eurocentsInput = String.valueOf(other.getEuro())
+                + String.valueOf(other.getCent());
+
+        int tempBetrag = Integer.valueOf(eurocentBetrag);
         int tempInput = Integer.valueOf(eurocentsInput);
-        
+
         int tempValue = Math.abs(tempBetrag - tempInput);
-        
+
         int tempCent = tempValue % 100;
         int tempEuro = (tempValue - (tempValue % 100)) / 100;
-        
+
         return Geldbetrag.get(tempEuro, tempCent);
-        
-        
-        
+
     }
 
     /**
@@ -96,7 +93,7 @@ public final class Geldbetrag
         int tempEuro = tempCent / 100;
         tempCent %= 100;
         tempEuro += Math.abs(_euro * multiplikator);
-        
+
         return Geldbetrag.get(tempEuro, tempCent);
     }
 
@@ -107,8 +104,22 @@ public final class Geldbetrag
      */
     public static Geldbetrag stringToGeldbetrag(String betrag)
     {
-        // TODO Auto-generated method stub
-        return null;
+        int komma = betrag.indexOf(',');
+        String tempEuro = "";
+        if (betrag.startsWith("0"))
+        {
+            tempEuro = betrag.substring(1, komma);
+
+        }
+        else
+        {
+
+            tempEuro = betrag.substring(0, komma);
+        }
+        String tempCent = betrag.substring(komma + 1);
+
+        return Geldbetrag.get(Integer.valueOf(tempEuro),
+                Integer.valueOf(tempCent));
     }
 
     /**
