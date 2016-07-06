@@ -104,6 +104,10 @@ public final class Geldbetrag
      */
     public static Geldbetrag stringToGeldbetrag(String betrag)
     {
+        if (betrag.isEmpty())
+        {
+            return Geldbetrag.get(0, 0);
+        }
         int komma = betrag.indexOf(',');
         String tempEuro = "";
         if (betrag.startsWith("0"))
