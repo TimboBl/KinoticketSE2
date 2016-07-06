@@ -118,7 +118,7 @@ public final class Geldbetrag
         }
         else
         {
-
+            //TODO per exception abfangen wenn das komma nicht da ist
             tempEuro = betrag.substring(0, komma);
         }
         String tempCent = betrag.substring(komma + 1);

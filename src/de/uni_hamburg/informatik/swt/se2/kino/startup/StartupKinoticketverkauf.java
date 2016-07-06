@@ -4,6 +4,7 @@ import javax.swing.SwingUtilities;
 
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Datum;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.FSK;
+import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Uhrzeit;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Film;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Kino;
@@ -72,53 +73,53 @@ public class StartupKinoticketverkauf
         final Vorstellung[] vorstellungen = {
                 // Heute
                 new Vorstellung(saele[0], filme[2], nachmittag, abend, d1,
-                        500),
+                        Geldbetrag.integerToGeldbetrag(500)),
                 new Vorstellung(saele[0], filme[0], abend, spaet, d1,
-                        700),
+                        Geldbetrag.integerToGeldbetrag(700)),
                 new Vorstellung(saele[0], filme[0], spaet, nacht, d1,
-                        700),
+                        Geldbetrag.integerToGeldbetrag(700)),
 
                 new Vorstellung(saele[1], filme[3], nachmittag, abend, d1,
-                        900),
+                        Geldbetrag.integerToGeldbetrag(900)),
                 new Vorstellung(saele[1], filme[1], spaet, nacht, d1,
-                        800),
+                        Geldbetrag.integerToGeldbetrag(800)),
 
                 new Vorstellung(saele[2], filme[3], abend, spaet, d1,
-                        1000),
+                        Geldbetrag.integerToGeldbetrag(1000)),
                 new Vorstellung(saele[2], filme[4], spaet, nacht, d1,
-                        900),
+                        Geldbetrag.integerToGeldbetrag(900)),
 
                 // Morgen
                 new Vorstellung(saele[0], filme[0], abend, spaet, d2,
-                        500),
+                        Geldbetrag.integerToGeldbetrag(500)),
                 new Vorstellung(saele[0], filme[0], spaet, nacht, d2,
-                        700),
+                        Geldbetrag.integerToGeldbetrag(700)),
 
                 new Vorstellung(saele[1], filme[2], nachmittag, abend, d2,
-                        900),
+                        Geldbetrag.integerToGeldbetrag(900)),
                 new Vorstellung(saele[1], filme[4], abend, nacht, d2,
-                        800),
+                        Geldbetrag.integerToGeldbetrag(800)),
 
                 new Vorstellung(saele[2], filme[3], nachmittag, abend, d2,
-                        1000),
+                        Geldbetrag.integerToGeldbetrag(1000)),
                 new Vorstellung(saele[2], filme[1], spaet, nacht, d2,
-                        900),
+                        Geldbetrag.integerToGeldbetrag(900)),
 
                 // Übermorgen
                 new Vorstellung(saele[0], filme[1], abend, spaet, d3,
-                        500),
+                        Geldbetrag.integerToGeldbetrag(500)),
                 new Vorstellung(saele[0], filme[1], spaet, nacht, d3,
-                        700),
+                        Geldbetrag.integerToGeldbetrag(700)),
 
                 new Vorstellung(saele[1], filme[2], nachmittag, abend, d3,
-                        900),
+                        Geldbetrag.integerToGeldbetrag(900)),
                 new Vorstellung(saele[1], filme[0], abend, nacht, d3,
-                        800),
+                        Geldbetrag.integerToGeldbetrag(800)),
 
                 new Vorstellung(saele[2], filme[3], abend, spaet, d3,
-                        1000),
+                        Geldbetrag.integerToGeldbetrag(1000)),
                 new Vorstellung(saele[2], filme[4], spaet, nacht, d3,
-                        900) };
+                        Geldbetrag.integerToGeldbetrag(900)) };
 
         return new Kino(saele, vorstellungen);
     }
