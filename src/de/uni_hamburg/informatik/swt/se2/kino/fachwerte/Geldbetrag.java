@@ -14,7 +14,6 @@ public final class Geldbetrag
 {
     private final int _euro;
     private final int _cent;
-
     /**
      * Initialisiert ein Geldbetragsobjekt
      * 
