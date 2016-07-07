@@ -83,9 +83,9 @@ public final class Geldbetrag
         assert other != null : "Vorbedingung verletzt";
 
         int betragEins = (_euro * 100) + _cent;
-        System.out.println(betragEins);
+        
         int betragZwei = (other._euro * 100) + other._cent;
-        System.out.println(betragZwei);
+        
         int ergebniss = Math.abs(betragEins - betragZwei);
         return integerToGeldbetrag(ergebniss);
 
