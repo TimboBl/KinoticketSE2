@@ -102,4 +102,15 @@ public class GeldbetragTest
         assertFalse(_zweiEuroZehn.lesser(_einEuroFuenfzig));
         assertTrue(_einEuroFuenfzig.lesser(_zweiEuroZehn));
     }
+    
+    /**
+     * Testet die korrekte Implementation von Comparable
+     */
+    @Test
+    public void testeComparableOperatore()
+    {
+    	assertEquals(1, _zweiEuroZehn.compareTo(_einEuroFuenfzig));
+    	assertEquals(0, _einEuroFuenfzig.compareTo(_einEuroFuenfzig));
+    	assertEquals(-1, _einEuroFuenfzig.compareTo(_zweiEuroZehn));
+    }
 }

@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @author Balthasar Spanner
  *
  */
-public final class Geldbetrag
+public final class Geldbetrag implements Comparable<Geldbetrag>
 {
     private final int _euro;
     private final int _cent;
@@ -275,4 +275,27 @@ public final class Geldbetrag
 
         return _euro == andererBetrag._euro && _cent == andererBetrag._cent;
     }
+
+	@Override
+	public int compareTo(Geldbetrag o) {
+		if (_euro < o._euro) return -1;
+		
+		if (this.equals(o)) return 0;
+	
+		if(_euro > o._euro) return 1;
+		
+		if(_euro == o._euro)
+		{
+			if (_cent < o._cent)
+				{
+					return -1;
+				}
+			else if(_cent > o._cent)
+			{
+				return 1;
+			}
+		}
+		
+		return 0;
+	}
 }
