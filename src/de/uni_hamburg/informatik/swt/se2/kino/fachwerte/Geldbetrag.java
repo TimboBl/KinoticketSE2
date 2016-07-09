@@ -249,11 +249,11 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 
         if (_cent < 10)
         {
-            ausgabe += "0" + _cent;
+            ausgabe += "0" + String.valueOf(_cent);
         }
         else
         {
-            ausgabe += _cent;
+            ausgabe += String.valueOf(_cent);
         }
 
         return ausgabe;
