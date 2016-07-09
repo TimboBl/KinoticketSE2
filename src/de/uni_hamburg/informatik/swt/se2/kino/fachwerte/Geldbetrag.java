@@ -125,7 +125,10 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 
     public static Geldbetrag stringToGeldbetrag(String betrag)
     {
-        assert betrag != null : "Vorbedingung verletzt: null";
+//        assert betrag != null : "Vorbedingung verletzt: null";
+        
+       
+        
         
         Matcher matcher = _pattern.matcher(betrag);
 
@@ -171,11 +174,9 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
      * @param betrag
      *            Der zu konvertierende Integer
      * @return Ein neues Geldbetragsobjekt
-     * @require betrag != 0
      */
     public static Geldbetrag integerToGeldbetrag(int betrag)
     {
-        assert betrag != 0 : "Vorbedingung verletzt: null";
         
         return Geldbetrag.get(betrag / 100, betrag % 100);
     }

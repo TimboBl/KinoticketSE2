@@ -266,6 +266,6 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
   //TODO anzeigetext anpassen
     private void zeigePreis()
     {
-        _ui.getPreisTextfield().setText(_preis + " Eurocent");
+        _ui.getPreisTextfield().setText(_preis + " Euro");
     }
 }
