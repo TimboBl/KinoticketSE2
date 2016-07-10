@@ -121,15 +121,11 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
      */
 
     private final static Pattern _pattern = Pattern
-        .compile("0*?([1-9][0-9]{0,6})?(,([0-9][0-9]?))?");
+        .compile("0*?([1-9][0-9]{0,6})?(,([0-9][0-9]?)?)?");
 
-    public static Geldbetrag stringToGeldbetrag(String betrag)
+    public static Geldbetrag stringToGeldbetrag(String betrag) throws NumberFormatException
     {
-//        assert betrag != null : "Vorbedingung verletzt: null";
-        
-       
-        
-        
+           
         Matcher matcher = _pattern.matcher(betrag);
 
         int tempEuros = 0;
@@ -165,6 +161,12 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
             }
 
         }
+        
+        else
+        {
+            throw new NumberFormatException();
+        }
+        
         return get(tempEuros, tempCents);
     }
 

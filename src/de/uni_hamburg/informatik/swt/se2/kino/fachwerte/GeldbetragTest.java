@@ -9,7 +9,6 @@ public class GeldbetragTest
     Geldbetrag _einEuroFuenfzig = Geldbetrag.get(1, 50);
     Geldbetrag _zweiEuroZehn = Geldbetrag.get(2, 10);
     
-    
     @Test
     public void testeGet()
     {
@@ -66,11 +65,39 @@ public class GeldbetragTest
         assertEquals(Geldbetrag.get(3, 50), Geldbetrag.stringToGeldbetrag("03,50"));
         assertEquals(Geldbetrag.get(3, 50), Geldbetrag.stringToGeldbetrag("000000003,50"));
         assertEquals(Geldbetrag.get(3, 50), Geldbetrag.stringToGeldbetrag("3,5"));
-        assertEquals(Geldbetrag.get(0, 0), Geldbetrag.stringToGeldbetrag("3,501"));
+        
         assertEquals(Geldbetrag.get(0, 72), Geldbetrag.stringToGeldbetrag("0,72"));
         assertEquals(Geldbetrag.get(0, 72), Geldbetrag.stringToGeldbetrag(",72"));
-        assertEquals(Geldbetrag.get(0, 0), Geldbetrag.stringToGeldbetrag("1234567891"));
-        assertEquals(Geldbetrag.get(0, 0), Geldbetrag.stringToGeldbetrag("1,"));
+        assertEquals(Geldbetrag.get(1, 0), Geldbetrag.stringToGeldbetrag("1,"));
+        
+        try
+        {
+            Geldbetrag.stringToGeldbetrag("3,501");
+            fail("Exception wurde erwartet");
+        }
+        catch(NumberFormatException e)
+        {
+            
+        }
+        catch (Exception e)
+        {
+            fail("Andere Exception wurde erwartet");
+        }
+        
+        try
+        {
+            Geldbetrag.stringToGeldbetrag("1234567891");
+            fail("Exception wurde erwartet");
+        }
+        catch(NumberFormatException e)
+        {
+            
+        }
+        catch (Exception e)
+        {
+            fail("Andere Exception wurde erwartet");
+        }
+        
     }
     
     /**
