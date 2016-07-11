@@ -62,12 +62,12 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     {
         assert other != null : "Vorbedingung verletzt: Der zu addierende Betrag darf nicht null sein";
 
-        int tempCents = _cent + other._cent;
-        int tempEuro = tempCents / 100;
-        tempCents %= 100;
-        tempEuro += _euro + other._euro;
-
-        return Geldbetrag.get(tempEuro, tempCents);
+        int betragEins = (_euro * 100) + _cent;
+        
+        int betragZwei = (other._euro * 100) + other._cent;
+        
+        int ergebniss = Math.abs(betragEins + betragZwei);
+        return integerToGeldbetrag(ergebniss);
     }
 
     /**
@@ -102,13 +102,14 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     public Geldbetrag mal(int multiplikator)
     {
         assert multiplikator != 0 : "Vorbedingung verletzt: null";
-        
-        int tempCent = Math.abs(_cent * multiplikator);
-        int tempEuro = tempCent / 100;
-        tempCent %= 100;
-        tempEuro += Math.abs(_euro * multiplikator);
 
-        return Geldbetrag.get(tempEuro, tempCent);
+
+
+        int betragEins = (_euro * 100) + _cent;
+        
+        
+        int ergebniss = Math.abs(betragEins * multiplikator);
+        return integerToGeldbetrag(ergebniss);
     }
 
     /**
