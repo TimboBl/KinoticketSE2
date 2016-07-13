@@ -3,7 +3,6 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.sun.org.apache.bcel.internal.generic.ReturnaddressType;
 
 /**
  * 
