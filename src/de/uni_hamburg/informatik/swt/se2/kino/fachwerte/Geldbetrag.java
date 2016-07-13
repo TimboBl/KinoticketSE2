@@ -3,6 +3,8 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.sun.org.apache.bcel.internal.generic.ReturnaddressType;
+
 /**
  * 
  * Ein Fachwert zur Repräsentation von Geldbeträgen für das Kinosystem
@@ -14,6 +16,7 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 {
     private final int _euro;
     private final int _cent;
+
     /**
      * Initialisiert ein Geldbetragsobjekt
      * 
@@ -29,7 +32,7 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 
         _euro = euro;
         _cent = cent;
-        
+
     }
 
     /**
@@ -63,9 +66,9 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
         assert other != null : "Vorbedingung verletzt: Der zu addierende Betrag darf nicht null sein";
 
         int betragEins = (_euro * 100) + _cent;
-        
+
         int betragZwei = (other._euro * 100) + other._cent;
-        
+
         int ergebniss = Math.abs(betragEins + betragZwei);
         return integerToGeldbetrag(ergebniss);
     }
@@ -83,9 +86,9 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
         assert other != null : "Vorbedingung verletzt";
 
         int betragEins = (_euro * 100) + _cent;
-        
+
         int betragZwei = (other._euro * 100) + other._cent;
-        
+
         int ergebniss = Math.abs(betragEins - betragZwei);
         return integerToGeldbetrag(ergebniss);
 
@@ -103,11 +106,8 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     {
         assert multiplikator != 0 : "Vorbedingung verletzt: null";
 
-
-
         int betragEins = (_euro * 100) + _cent;
-        
-        
+
         int ergebniss = Math.abs(betragEins * multiplikator);
         return integerToGeldbetrag(ergebniss);
     }
@@ -124,9 +124,10 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     private final static Pattern _pattern = Pattern
         .compile("0*?([1-9][0-9]{0,6})?(,([0-9][0-9]?)?)?");
 
-    public static Geldbetrag stringToGeldbetrag(String betrag) throws NumberFormatException
+    public static Geldbetrag stringToGeldbetrag(String betrag)
+            throws NumberFormatException
     {
-           
+
         Matcher matcher = _pattern.matcher(betrag);
 
         int tempEuros = 0;
@@ -162,12 +163,12 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
             }
 
         }
-        
+
         else
         {
             throw new NumberFormatException();
         }
-        
+
         return get(tempEuros, tempCents);
     }
 
@@ -180,7 +181,7 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
      */
     public static Geldbetrag integerToGeldbetrag(int betrag)
     {
-        
+
         return Geldbetrag.get(betrag / 100, betrag % 100);
     }
 
@@ -195,17 +196,10 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     public boolean greater(Geldbetrag other)
     {
         assert other != null : "Vorbedingung verletzt: null";
-        
-        if (_euro > other._euro)
+
+        if ((this.compareTo(other)) > 0)
         {
             return true;
-        }
-        else if (_euro == other._euro)
-        {
-            if (_cent > other._cent)
-            {
-                return true;
-            }
         }
         return false;
     }
@@ -221,17 +215,10 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     public boolean lesser(Geldbetrag other)
     {
         assert other != null : "Vorbedingung verletzt: null";
-        
-        if (_euro < other._euro)
+
+        if ((this.compareTo(other) < 0))
         {
             return true;
-        }
-        else if (_euro == other._euro)
-        {
-            if (_cent < other._cent)
-            {
-                return true;
-            }
         }
         return false;
     }
@@ -280,26 +267,27 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
         return _euro == andererBetrag._euro && _cent == andererBetrag._cent;
     }
 
-	@Override
-	public int compareTo(Geldbetrag o) {
-		if (_euro < o._euro) return -1;
-		
-		if (this.equals(o)) return 0;
-	
-		if(_euro > o._euro) return 1;
-		
-		if(_euro == o._euro)
-		{
-			if (_cent < o._cent)
-				{
-					return -1;
-				}
-			else if(_cent > o._cent)
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+    @Override
+    public int compareTo(Geldbetrag o)
+    {
+        if (_euro < o._euro) return -1;
+
+        if (this.equals(o)) return 0;
+
+        if (_euro > o._euro) return 1;
+
+        if (_euro == o._euro)
+        {
+            if (_cent < o._cent)
+            {
+                return -1;
+            }
+            else if (_cent > o._cent)
+            {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
 }
